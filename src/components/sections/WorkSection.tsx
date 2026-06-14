@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { Icons } from "@/components/icons/TechIcons";
 
 const fadeUp = (delay = 0) => ({
   hidden: { opacity: 0, y: 28 },
@@ -15,7 +16,7 @@ const PROJECTS = [
     subtitle: "Unified OS for Software Engineers",
     summary:
       "A comprehensive workspace integrating tasks, habits, learning goals, and developer metrics. Features GitHub sync, LeetCode progress tracking, and developer news aggregation in a cohesive interface.",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS", "MongoDB", "Auth.js", "Zustand"],
+    tech: ["Next.js", "TypeScript", "React.js", "Tailwind CSS", "ShadCN UI", "Radix UI", "Lucide React", "Auth.js (NextAuth)", "Google OAuth Provider", "MongoDB Atlas", "Mongoose", "Zustand", "TanStack Query", "React Hook Form", "Zod", "Framer Motion", "GitHub REST API", "LeetCode GraphQL API", "Hacker News API"],
     impact: "Unified developer workflow",
     role: "Full-Stack Dev",
     featured: true,
@@ -24,15 +25,15 @@ const PROJECTS = [
   },
   {
     id: "02",
-    title: "FlowForge",
-    subtitle: "Visual Pipeline Builder",
+    title: "JobTrackr",
+    subtitle: "Application Tracking Dashboard",
     summary:
-      "Node-based workflow editor with DAG validation. Drag-and-drop interface for building processing pipelines that compile to executable tasks.",
-    tech: ["React Flow", "Zustand", "FastAPI", "Python"],
-    impact: "500+ active users",
-    role: "Creator",
-    link: "https://github.com/vivek/flowforge",
-    demo: "#",
+      "A comprehensive job tracking application that helps candidates organize and manage their job applications. Features interactive data visualization with Chart.js to track application statuses and success rates.",
+    tech: ["React.js", "JavaScript", "Tailwind CSS", "MUI", "Redux Toolkit", "React Router", "React Hook Form", "Chart.js", "Lucide React"],
+    impact: "Streamlined job hunting",
+    role: "Frontend Dev",
+    link: "https://github.com/vivekkad1/React-projects/tree/main/JobTrackr",
+    demo: "https://visionary-valkyrie-57f2d2.netlify.app",
   },
   {
     id: "03",
@@ -143,7 +144,7 @@ function FeaturedCard({ project }: { project: typeof PROJECTS[0] }) {
             Featured
           </span>
           <span className="font-mono" style={{ fontSize: "0.6rem", color: "var(--text-muted)" }}>
-            project_{project.id}
+            project {Number(project.id)}
           </span>
         </div>
 
@@ -172,7 +173,16 @@ function FeaturedCard({ project }: { project: typeof PROJECTS[0] }) {
         </div>
 
         <div style={{ display: "flex", flexWrap: "wrap", gap: "0.35rem" }}>
-          {project.tech.map((t) => <span key={t} className="tag">{t}</span>)}
+          {project.tech.map((t) => (
+            <span key={t} className="tag" style={{ display: "flex", alignItems: "center", gap: "0.3rem" }}>
+              {Icons[t] && (
+                <span style={{ fontSize: "14px", display: "flex", alignItems: "center" }}>
+                  {Icons[t]}
+                </span>
+              )}
+              {t}
+            </span>
+          ))}
         </div>
 
         <div style={{ display: "flex", gap: "0.6rem", marginTop: "auto", paddingTop: "0.5rem" }}>
@@ -239,20 +249,25 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[0]; index: n
       style={{ display: "flex", flexDirection: "column", padding: "1.75rem", gap: "1.25rem", position: "relative", overflow: "hidden" }}
     >
       {/* Window top bar */}
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "0.5rem" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
           <div style={{ display: "flex", gap: "5px" }}>
             {[0.3,0.3,0.3].map((o,i) => (
               <div key={i} style={{ width: 7, height: 7, borderRadius: "50%", background: "var(--bg-border)", opacity: o }} />
             ))}
           </div>
-          <span className="font-mono" style={{ fontSize: "0.6rem", color: "var(--text-muted)" }}>
-            project_{project.id}.tsx
+          <span className="font-mono" style={{ fontSize: "0.6rem", color: "var(--text-muted)", whiteSpace: "nowrap" }}>
+            project {Number(project.id)}
           </span>
         </div>
-        <div style={{ display: "flex", gap: "0.4rem" }}>
-          <IconBtn href={project.link} label="GitHub"><GithubIcon /></IconBtn>
-          <IconBtn href={project.demo} label="Live demo"><ExternalIcon /></IconBtn>
+        <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
+          <span className="tag" style={{ borderColor: "var(--accent-border)", color: "var(--accent)", background: "var(--accent-dim)", fontSize: "0.55rem", whiteSpace: "nowrap", padding: "0.15rem 0.4rem" }}>
+            {project.role}
+          </span>
+          <div style={{ display: "flex", gap: "0.4rem" }}>
+            <IconBtn href={project.link} label="GitHub"><GithubIcon /></IconBtn>
+            <IconBtn href={project.demo} label="Live demo"><ExternalIcon /></IconBtn>
+          </div>
         </div>
       </div>
 
@@ -282,15 +297,19 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[0]; index: n
 
       {/* Tech + Role */}
       <div style={{ display: "flex", flexWrap: "wrap", gap: "0.3rem" }}>
-        {project.tech.map((t) => <span key={t} className="tag">{t}</span>)}
+        {project.tech.map((t) => (
+          <span key={t} className="tag" style={{ display: "flex", alignItems: "center", gap: "0.3rem" }}>
+            {Icons[t] && (
+              <span style={{ fontSize: "14px", display: "flex", alignItems: "center" }}>
+                {Icons[t]}
+              </span>
+            )}
+            {t}
+          </span>
+        ))}
       </div>
 
-      {/* Role badge */}
-      <div style={{ position: "absolute", top: "1.75rem", right: "5.5rem" }}>
-        <span className="tag" style={{ borderColor: "var(--accent-border)", color: "var(--accent)", background: "var(--accent-dim)", fontSize: "0.55rem" }}>
-          {project.role}
-        </span>
-      </div>
+
 
       {/* Hover underline */}
       <div style={{

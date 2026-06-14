@@ -183,7 +183,7 @@ export default function AboutSection() {
                   ["Location",   "India 🇮🇳"],
                   ["Focus",      "Next.js & React"],
                   ["Timezone",   "IST (UTC+5:30)"],
-                  ["Languages",  "JS, TS, React"],
+                  ["Languages",  "JS, TS, Python"],
                 ].map(([label, value], i, arr) => (
                   <div
                     key={label}

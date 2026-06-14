@@ -264,7 +264,7 @@ export default function ContactSection() {
               <p className="label" style={{ marginBottom: "1.25rem" }}>What I'm looking for</p>
               <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
                 {[
-                  "Next.js frontend engineering roles",
+                  "Next.js and React Developer roles",
                   "Teams that ship and iterate quickly",
                   "Problems at the intersection of AI + UX",
                   "Contract projects with real technical scope",
