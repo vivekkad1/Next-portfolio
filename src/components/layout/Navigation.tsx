@@ -35,7 +35,14 @@ export default function Navigation() {
 
   const scrollTo = (href: string) => {
     setMobileOpen(false);
-    document.getElementById(href.replace("#", ""))?.scrollIntoView({ behavior: "smooth" });
+    const target = document.getElementById(href.replace("#", ""));
+    if (target) {
+      if ((window as any).lenis) {
+        (window as any).lenis.scrollTo(target);
+      } else {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    }
   };
 
   return (

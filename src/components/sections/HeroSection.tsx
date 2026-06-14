@@ -152,7 +152,14 @@ export default function HeroSection() {
               <a
                 href="#work"
                 className="btn btn-primary"
-                onClick={(e) => { e.preventDefault(); document.getElementById("work")?.scrollIntoView({ behavior: "smooth" }); }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  const target = document.getElementById("work");
+                  if (target) {
+                    if ((window as any).lenis) (window as any).lenis.scrollTo(target);
+                    else target.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
               >
                 View My Work
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
@@ -162,7 +169,14 @@ export default function HeroSection() {
               <a
                 href="#contact"
                 className="btn btn-ghost"
-                onClick={(e) => { e.preventDefault(); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }); }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  const target = document.getElementById("contact");
+                  if (target) {
+                    if ((window as any).lenis) (window as any).lenis.scrollTo(target);
+                    else target.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
               >
                 Let's Talk
               </a>
