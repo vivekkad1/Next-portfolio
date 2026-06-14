@@ -21,13 +21,18 @@ export default function Navigation() {
     const onScroll = () => {
       setScrolled(window.scrollY > 50);
       const ids = ["contact", "about", "skills", "work"];
+      let currentSection = "";
       for (const id of ids) {
         const el = document.getElementById(id);
-        if (el && window.scrollY + 140 >= el.offsetTop) {
-          setActiveSection(id);
-          break;
+        if (el) {
+          const offsetTop = el.getBoundingClientRect().top + window.scrollY;
+          if (window.scrollY + 140 >= offsetTop) {
+            currentSection = id;
+            break;
+          }
         }
       }
+      setActiveSection(currentSection);
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
