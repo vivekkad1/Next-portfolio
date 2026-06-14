@@ -195,7 +195,7 @@ export default function SkillsSection() {
             <div style={{ marginTop: "1.25rem", paddingTop: "1.25rem", borderTop: "1px solid var(--bg-border-subtle)" }}>
               <p className="font-mono" style={{ fontSize: "0.6rem", color: "var(--text-muted)", marginBottom: "0.75rem" }}>// currently exploring</p>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem" }}>
-                {["Rust", "WebAssembly", "LLM Agents"].map((t) => (
+                {["AI & ML"].map((t) => (
                   <span key={t} className="tag" style={{ borderColor: "var(--accent-border)", color: "var(--accent)", background: "var(--accent-dim)" }}>
                     {t}
                   </span>
